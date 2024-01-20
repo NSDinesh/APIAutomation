@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class CreateUsersPayload {
 
-    public static Map<String,String> get(String name, String job) {
-        Map<String, String> userDetails = new HashMap<>();
+    public static Map<String,Object> get(String name, String job) {
+        Map<String, Object> userDetails = new HashMap<>();
         userDetails.put("name",name);
         userDetails.put("job",job);
 

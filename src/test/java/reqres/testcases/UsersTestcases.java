@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import reqres.api.ReqResApi;
 import reqres.payload.CreateUsersPayload;
 import utils.RestUtils;
 
@@ -34,7 +35,7 @@ public class UsersTestcases {
         Assert.assertEquals(response.statusCode(),201);
 
         //using method from RestUtils payload as Map
-        Map<String, String> userDetails = new HashMap<>();
+        Map<String, Object> userDetails = new HashMap<>();
         userDetails.put("name","ABC");
         userDetails.put("job","Tester");
         response = RestUtils.performPost("https://reqres.in/api/users",userDetails, new HashMap<>());
@@ -47,6 +48,14 @@ public class UsersTestcases {
         Response response = RestUtils.performPost("https://reqres.in/api/users",
                 CreateUsersPayload.get("XYZ","Automation Tester"),
                 new HashMap<>());
+        Assert.assertEquals(response.statusCode(),201);
+    }
+
+    @Test
+    public void createUsersFromReqResApi() {
+        //here we have created wrapper class ReqResApi and hiding request details from testclass
+       Response response = ReqResApi.getInstance().createUsers(
+               CreateUsersPayload.get("XYZ","Automation Tester"));
         Assert.assertEquals(response.statusCode(),201);
     }
 

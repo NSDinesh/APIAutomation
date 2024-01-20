@@ -3,6 +3,7 @@ package utils;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class RestUtils {
@@ -20,7 +21,7 @@ public class RestUtils {
                 .then().log().all().extract().response();
     }
 
-    public static Response performPost(String endpoint, Map<String,String> requestPayload, Map<String,String> headers) {
+    public static Response performPost(String endpoint, Map<String,Object> requestPayload, Map<String,String> headers) {
         return RestAssured.given().log().all()
                 .baseUri(endpoint)
                 .headers(headers)
