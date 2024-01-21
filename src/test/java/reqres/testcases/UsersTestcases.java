@@ -3,6 +3,7 @@ package reqres.testcases;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import reqres.api.ReqResApi;
 import reqres.payload.CreateUsersPayload;
@@ -11,6 +12,7 @@ import utils.RestUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+@Listeners(listeners.Listeners.class)
 public class UsersTestcases {
 
     @Test
