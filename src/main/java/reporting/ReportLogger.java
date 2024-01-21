@@ -1,5 +1,6 @@
 package reporting;
 
+import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 
@@ -19,5 +20,10 @@ public class ReportLogger {
 
     public static void warning(String log) {
         ExtentTestManager.getExtentTest().warning(MarkupHelper.createLabel(log, ExtentColor.YELLOW));
+    }
+
+    public static void logJson(String message,String json) {
+        ExtentTestManager.getExtentTest().info(MarkupHelper.createLabel(message, ExtentColor.GREY));
+        ExtentTestManager.getExtentTest().info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
     }
 }

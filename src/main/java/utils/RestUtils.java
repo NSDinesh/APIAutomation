@@ -28,13 +28,13 @@ public class RestUtils {
         ReportLogger.info("Endpoint is "+queryableRequestSpecification.getBaseUri());
         ReportLogger.info("Method is "+queryableRequestSpecification.getMethod());
         ReportLogger.info("Headers are "+queryableRequestSpecification.getHeaders().asList().toString());
-        ReportLogger.info("Request body is "+queryableRequestSpecification.getBody());
+        ReportLogger.logJson("Request body",queryableRequestSpecification.getBody());
     }
 
     private static void printResponseDetailsInReport(Response response) {
         ReportLogger.info("Status code is "+response.getStatusCode());
         ReportLogger.info("Response Headers are "+response.getHeaders().asList().toString());
-        ReportLogger.info("Response body is "+response.getBody());
+        ReportLogger.logJson("Response body",response.getBody().prettyPrint());
     }
 
     public static Response performPost(String endpoint, String requestPayload, Map<String,String> headers) {
