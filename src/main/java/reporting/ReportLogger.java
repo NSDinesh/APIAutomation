@@ -26,4 +26,8 @@ public class ReportLogger {
         ExtentTestManager.getExtentTest().info(MarkupHelper.createLabel(message, ExtentColor.GREY));
         ExtentTestManager.getExtentTest().info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
     }
+
+    public static void logException(Throwable throwable) {
+        ExtentTestManager.getExtentTest().fail(throwable);
+    }
 }

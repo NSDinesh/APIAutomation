@@ -58,7 +58,7 @@ public class UsersTestcases {
         //here we have created wrapper class ReqResApi and hiding request details from testclass
        Response response = ReqResApi.getInstance().createUsers(
                CreateUsersPayload.get("XYZ","Automation Tester"));
-        Assert.assertEquals(response.statusCode(),201);
+        Assert.assertEquals(response.statusCode(),200);
     }
 
 

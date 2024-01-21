@@ -7,8 +7,10 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import reporting.ExtentReportManager;
 import reporting.ExtentTestManager;
+import reporting.ReportLogger;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class Listeners implements ITestListener {
 
@@ -28,6 +30,11 @@ public class Listeners implements ITestListener {
     public void onTestStart(ITestResult result) {
         ExtentTest extentTest = extentReports.createTest(result.getTestClass().getName()+"-"+result.getMethod().getMethodName());
         ExtentTestManager.setExtentTest(extentTest);
+    }
+
+    public void onTestFailure(ITestResult result) {
+        ReportLogger.fail(result.getThrowable().getMessage());
+        ReportLogger.logException(result.getThrowable());
     }
 
 }
